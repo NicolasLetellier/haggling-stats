@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "fetch and extract statistics from challenge_haggling arenas' data",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "mrletelliernicolas@yahoo.fr",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.87.0"
+  }
 }
