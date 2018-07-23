@@ -1,0 +1,10 @@
+{
+  "name": "haggling-stats",
+  "version": "1.0.0",
+  "description": "fetch and extract statistics from challenge_haggling arenas' data",
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": "mrletelliernicolas@yahoo.fr",
+  "license": "ISC"
+}
