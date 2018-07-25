@@ -11,15 +11,19 @@ let url4 = 'https://hola.org/challenges/haggling/scores/large_1s';
 // topX : number, top x best score averages (e.g. 10)
 // minimumSessions : number , minimum of sessions for not that bad statistics
 // url: string, url of the arena's json
-let options = ['2018-07-20', 10, 300, url2];
+let options = ['2018-07-25', 10, 300, url1];
 
-
-let id = '01a48ec1e1c3668a7f55f401efc53388';
+// original id '01a48ec1e1c3668a7f55f401efc53388'
+let id = [
+  '01a48ec1e1c3668a7f55f401efc53388', // original
+  '3d68cef4b216443d83b8ec0f25e5eb71', // 00
+  '83e11edfb483c3d83cd9329b7f9e7214', // 01 ...
+  ];
 
 function stats(jsonBody, options) {
 
   let allDayParticipantsSessions = [];
-  let mySessions;
+  let mySessions = [];
   let totalDaySessions = 0;
 
   for (let participant in jsonBody) {
@@ -27,8 +31,11 @@ function stats(jsonBody, options) {
       if (day === options[0] && jsonBody[participant][day]['sessions'] > options[2]) {
         allDayParticipantsSessions.push(jsonBody[participant][day]);
         totalDaySessions += jsonBody[participant][day]['sessions'];
-        if (participant === id) {
-          mySessions = jsonBody[participant][day];
+        for (let i = 0; i < id.length; i++) {
+          mySessions.push(undefined);
+          if (participant === id[i]) {
+            mySessions[i] = jsonBody[participant][day];
+          }
         }
       }
     }
@@ -36,8 +43,19 @@ function stats(jsonBody, options) {
 
   console.log('_____________________________________\nDay ' + options[0] + '  /  Arena: ' + options[3].replace('https://hola.org/challenges/haggling/scores/', '') + '\n');
 
-  if (mySessions) {
-    console.log('> MY SCORE:   ' + (mySessions.score / mySessions.sessions).toFixed(2) + '   Agreed: ' + (mySessions.agreements / mySessions.sessions).toFixed(2) + '\n');
+  for (let i = 0; i < mySessions.length; i++) {
+    if (mySessions[i]) {
+      let idNumber;
+      if (i === 0) {
+        idNumber = 'original ID'
+      } else {
+        idNumber = i - 1;
+      }
+      console.log('> MY SCORE # ' + idNumber + ' :   ' + (mySessions[i].score / mySessions[i].sessions).toFixed(2) + '   Agreed: ' + (mySessions[i].agreements / mySessions[i].sessions).toFixed(2));
+    }
+    if (i === mySessions.length - 1) {
+      console.log('');
+    }
   }
 
   let totalSessionAverageScores = 0;
