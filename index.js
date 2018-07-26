@@ -11,7 +11,7 @@ let url4 = 'https://hola.org/challenges/haggling/scores/large_1s';
 // topX : number, top x best score averages (e.g. 10)
 // minimumSessions : number , minimum of sessions for not that bad statistics
 // url: string, url of the arena's json
-let options = ['2018-07-26', 20, 20, url1];
+let options = ['2018-07-26', 20, 10, url2];
 
 // original id '01a48ec1e1c3668a7f55f401efc53388'
 let id = [
@@ -26,7 +26,8 @@ let id = [
   'd91cfdf2c6e1bcfc01a79345b73858f9',
   '5559a6bb11ab068fe3f12d428aed72d6',
   '94868a37021f56085d58daa26ec67a36',
-  'ab09277293fd0b3448f1bf25fe123d5a'
+  'ab09277293fd0b3448f1bf25fe123d5a',
+  'dd7e0c58a499e713eeab30313363517d'
   ];
 
 function stats(jsonBody, options) {
